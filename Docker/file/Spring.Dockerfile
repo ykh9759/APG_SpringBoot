@@ -27,4 +27,7 @@ COPY spring.vhost.conf /etc/nginx/sites-available/
 
 RUN ln -s /etc/nginx/sites-available/spring.vhost.conf /etc/nginx/sites-enabled/vhost.conf
 
-CMD ["nginx", "-g", "daemon off;"]
+#nginx 기존 심볼릭링크 삭제
+RUN rm /etc/nginx/sites-enabled/default
+
+RUN systemctl enable nginx

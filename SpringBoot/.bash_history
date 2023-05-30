@@ -60,3 +60,10 @@ su -
 exit
 sudo java -jar ./build/libs/apg-0.0.1-SNAPSHOT.jar 
 exit
+echo alias ll='ls -l' >> /home/springboot/.bashrc
+ll
+ls -l
+alias ll='ls -l'
+ll
+su - root
+exit

@@ -36,4 +36,4 @@ RUN ln -s /etc/nginx/sites-available/vue.vhost.conf /etc/nginx/sites-enabled/vho
 #nginx 기존 심볼릭링크 삭제
 RUN rm /etc/nginx/sites-enabled/default
 
-CMD ["nginx", "-g", "daemon off;"]
+RUN systemctl enable nginx
