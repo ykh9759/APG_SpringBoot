@@ -69,4 +69,5 @@ coverage
 .npm
 .bash_history
 .viminfo
+.vuerc
 

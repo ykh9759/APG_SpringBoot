@@ -27,7 +27,7 @@ RUN ["/bin/bash", "-c", "echo 'vue ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers"]
 #소유주 및 그룹 변경
 RUN chown -R vue:vue /home/vue
 
-RUN npm install -g @vue/cli-service
+RUN npm install -g @vue/cli
 
 
 #nginx 설정파일 심볼릭링크 설정
