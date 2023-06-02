@@ -1,0 +1,9 @@
+
+> vue@0.0.0 dev
+> vite --port 3000
+
+
+  VITE v4.3.9  ready in 897 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://172.19.0.10:3000/
