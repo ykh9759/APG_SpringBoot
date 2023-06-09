@@ -1,47 +1,33 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <router-link v-if="!hideLink" @click.native="handleLinkClick" to="/home" class="btn btn-primary">방생성</router-link>
+    {{  hideLink}}
+    <router-view></router-view>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+  export default {
+    data() {
+      return {
+        hideLink: false
+      };
+    },
+    methods: {
+      handleLinkClick() {
+        // 값을 변경합니다.
+        this.hideLink = true;
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+        // 페이지가 이동됩니다.
+      },
+      resetLink() {
+        this.hideLink = false;
+      }
+    },
+    mounted() {
+      window.addEventListener('popstate', this.resetLink);
+    }
+  };
+</script>
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
