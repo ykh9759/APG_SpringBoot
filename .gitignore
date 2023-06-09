@@ -70,4 +70,5 @@ coverage
 .bash_history
 .viminfo
 .vuerc
+nohup.out
 

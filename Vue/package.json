@@ -4,18 +4,19 @@
   "private": true,
   "scripts": {
     "build": "vite build",
-    "dev": "vite",
+    "dev": "vite --port 3000",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vue/compat": "^3.3.2",
     "bootstrap": "^5.3.0",
     "bootstrap-vue": "^2.23.1",
     "vue": "^3.3.2",
-    "@vue/compat": "^3.3.2"
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.3.9",
-    "@vue/compiler-sfc": "^3.3.2"
+    "@vue/compiler-sfc": "^3.3.2",
+    "vite": "^4.3.9"
   }
 }

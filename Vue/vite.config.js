@@ -21,5 +21,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       vue: '@vue/compat'
     }
+  },
+  server: {
+    host: '0.0.0.0'
   }
 })

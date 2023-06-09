@@ -29,7 +29,6 @@ RUN chown -R vue:vue /home/vue
 
 RUN npm install -g @vue/cli
 
-
 #nginx 설정파일 심볼릭링크 설정
 RUN ln -s /etc/nginx/sites-available/vue.vhost.conf /etc/nginx/sites-enabled/vhost.conf
 

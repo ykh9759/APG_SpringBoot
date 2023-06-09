@@ -11,20 +11,20 @@ RUN apt install -y curl
 RUN apt install -y telnet
 RUN apt install -y init systemd
 
+RUN adduser spring
+WORKDIR /home/spring
 
-RUN adduser springboot
-WORKDIR /home/springboot
-
-
+#단축명령어 
 RUN ["/bin/bash", "-c", "echo alias ll=\"'ls -l'\" >> /etc/bash.bashrc"]
-RUN ["/bin/bash", "-c", "echo 'vue ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers"]
 
-RUN chown -R springboot:springboot /home/springboot
+#sudo권한 부여
+RUN ["/bin/bash", "-c", "echo 'spring ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers"]
+
+#소유주 및 그룹 변경
+RUN chown -R spring:spring /home/spring
 
 
-#nginx vhost설정파일 복사
-COPY spring.vhost.conf /etc/nginx/sites-available/
-
+#nginx 설정파일 심볼릭링크 설정
 RUN ln -s /etc/nginx/sites-available/spring.vhost.conf /etc/nginx/sites-enabled/vhost.conf
 
 #nginx 기존 심볼릭링크 삭제
