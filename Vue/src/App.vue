@@ -1,7 +1,16 @@
 <template>
-  <div>
-    <router-link v-if="!hideLink" @click.native="handleLinkClick" to="/home" class="btn btn-primary">방생성</router-link>
-    {{  hideLink}}
+  <div class="h-100">
+    <div class="col-12">
+      <router-link v-if="createLink" to="/home" v-slot="{ navigate }">
+        <button class="btn btn-primary" @click="handleLinkClick('1'); navigate()">방생성</button>
+      </router-link>
+
+      <router-link v-if="homeLink" to="/"  v-slot="{ navigate }">
+        <button class="btn btn-primary" @click="handleLinkClick('2'); navigate()">HOME</button>
+      </router-link>
+    </div>
+    {{ createLink }}{{ homeLink }}
+    
     <router-view></router-view>
   </div>
 </template>
@@ -11,18 +20,33 @@
   export default {
     data() {
       return {
-        hideLink: false
+        createLink: true,
+        homeLink: false
       };
     },
     methods: {
-      handleLinkClick() {
-        // 값을 변경합니다.
-        this.hideLink = true;
+      handleLinkClick(type) {
+        if(type == '1') {
+          axios.get('http://localhost:8080/front/createChatRoom')
+            .then(response => {
+              console.log(response.data);
+              this.createLink = false;
+              this.homeLink = true;
+            })
+            .catch(error => {
+              console.error(error);
+            });
+
+        } else if(type == '2') {
+          this.createLink = true;
+          this.homeLink = false;
+        }
 
         // 페이지가 이동됩니다.
       },
       resetLink() {
-        this.hideLink = false;
+        this.createLink = true;
+        this.homeLink = false;
       }
     },
     mounted() {
