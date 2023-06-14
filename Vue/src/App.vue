@@ -27,9 +27,9 @@
     methods: {
       handleLinkClick(type) {
         if(type == '1') {
-          axios.get('http://localhost:8080/front/createChatRoom')
+          this.$axios.get('http://localhost:8080/front/createChatRoom')
             .then(response => {
-              console.log(response.data);
+              console.log(response);
               this.createLink = false;
               this.homeLink = true;
             })
