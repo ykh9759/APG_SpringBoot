@@ -18,7 +18,7 @@ services:
             command: /sbin/init
             user: 0:0
             environment:
-                TZ: "Asia/Seoul"
+                TZ: Asia/Seoul
             networks:
                 server_net:
                     ipv4_address: "172.19.0.10"
@@ -35,7 +35,7 @@ services:
         command: /sbin/init
         user: 0:0
         environment:
-            TZ: "Asia/Seoul"
+            TZ: Asia/Seoul
         networks:
             server_net:
                 ipv4_address: "172.19.0.20"

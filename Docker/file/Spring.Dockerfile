@@ -1,6 +1,8 @@
 # 우분투 기반 이미지를 선택합니다.
 FROM ubuntu:22.04
 
+ENV TZ=Asia/Seoul
+
 # 패키지 업데이트 및 필요한 패키지 설치
 RUN apt update
 RUN apt install -y vim
@@ -10,7 +12,7 @@ RUN apt install -y curl
 RUN apt install -y telnet
 RUN apt install -y init systemd
 RUN apt install -y openjdk-17-jdk
-RUN apt install -y rdate
+RUN apt install -y rdate tzdata
 
 RUN adduser spring
 WORKDIR /home/spring

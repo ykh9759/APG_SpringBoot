@@ -10,6 +10,7 @@ RUN apt install -y sudo
 RUN apt install -y curl
 RUN apt install -y telnet
 RUN apt install -y init systemd
+RUN apt install -y rdate tzdata
 
 #nodejs lts버전 설치
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
