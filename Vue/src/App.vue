@@ -1,57 +1,71 @@
 <template>
-  <div class="h-100">
-    <div class="col-12">
-      <router-link v-if="createLink" to="/home" v-slot="{ navigate }">
-        <button class="btn btn-primary" @click="handleLinkClick('1'); navigate()">방생성</button>
-      </router-link>
-
-      <router-link v-if="homeLink" to="/"  v-slot="{ navigate }">
-        <button class="btn btn-primary" @click="handleLinkClick('2'); navigate()">HOME</button>
-      </router-link>
+  <div id="app">
+    <router-view class="container" />
+    <div class="app__brand">
+      <p @click="moveToHome" class="app__logo">lavlue</p>
+      <div class="app__copyright">ⓒ 2021 Devpla. All Right Reserved.</div>
     </div>
-    {{ createLink }}{{ homeLink }}
-    
-    <router-view></router-view>
   </div>
 </template>
 
 <script>
-
-  export default {
-    data() {
-      return {
-        createLink: true,
-        homeLink: false
-      };
+export default {
+  methods: {
+    moveToHome() {
+      this.$router.push({ name: "login" });
+      this.$router.go(this.$router.currentRoute);
     },
-    methods: {
-      handleLinkClick(type) {
-        if(type == '1') {
-          this.$axios.get('http://localhost:8080/front/createChatRoom')
-            .then(response => {
-              console.log(response);
-              this.createLink = false;
-              this.homeLink = true;
-            })
-            .catch(error => {
-              console.error(error);
-            });
-
-        } else if(type == '2') {
-          this.createLink = true;
-          this.homeLink = false;
-        }
-
-        // 페이지가 이동됩니다.
-      },
-      resetLink() {
-        this.createLink = true;
-        this.homeLink = false;
-      }
-    },
-    mounted() {
-      window.addEventListener('popstate', this.resetLink);
-    }
-  };
+  },
+};
 </script>
 
+<style>
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+@font-face {
+  font-family: "Golden Plains - Demo";
+  src: url("./assets/GoldenPlains.woff2") format("woff2"),
+    url("./assets/GoldenPlains.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif;
+}
+
+body {
+  background-color: #cfcff4;
+}
+
+.container {
+  max-width: 375px;
+  height: 812px;
+  background-color: #ffffff;
+  margin: 5rem auto 0rem;
+  border-radius: 1.5rem;
+  box-shadow: 0px 1px 20px #9c9cc855;
+}
+
+.app__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app__logo {
+  font-family: "Golden Plains - Demo";
+  font-size: 4rem;
+  text-decoration: none;
+  margin-top: 3rem;
+  margin-bottom: -10px;
+  color: #ffffff;
+}
+
+.app__copyright {
+  font-size: 10px;
+  color: #ffffff;
+}
+</style>
