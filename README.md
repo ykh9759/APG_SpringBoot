@@ -2,7 +2,7 @@
 AuctionPlayGround 경매놀이터 
 
 ### Description
-- 2023-05 ~ 개발중
+- 개발중
 - 경매 기능과 경매를 하며 채팅이 가능하다.
 
 ### Language
