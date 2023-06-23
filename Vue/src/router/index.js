@@ -16,7 +16,6 @@ const routes = [
 ];
 
 const router = new createRouter({
-  mode: "history",
   history: createWebHistory(),
   routes,
 });

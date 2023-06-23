@@ -1,11 +1,9 @@
 <template>
-  <div id="app">
     <router-view class="container" />
-    <div class="app__brand">
-      <p @click="moveToHome" class="app__logo">lavlue</p>
-      <div class="app__copyright">ⓒ 2021 Devpla. All Right Reserved.</div>
+    <div class="app_brand">
+      <p @click="moveToHome" class="app_logo">CPG</p>
+      <div class="app_copyright">ⓒ 2023 Huni. All Right Reserved.</div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -37,7 +35,7 @@ export default {
 }
 
 body {
-  background-color: #cfcff4;
+  background-color: #82e3ce;
 }
 
 .container {
@@ -49,23 +47,23 @@ body {
   box-shadow: 0px 1px 20px #9c9cc855;
 }
 
-.app__brand {
+.app_brand {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.app__logo {
+.app_logo {
   font-family: "Golden Plains - Demo";
   font-size: 4rem;
   text-decoration: none;
   margin-top: 3rem;
   margin-bottom: -10px;
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 
-.app__copyright {
+.app_copyright {
   font-size: 10px;
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 </style>
