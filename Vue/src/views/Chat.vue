@@ -32,7 +32,8 @@ export default {
     }),
   },
   created() {
-    this.userData = this.$route.params.userData;
+    const storedData = localStorage.getItem('user');
+    this.userData = JSON.parse(storedData);
   },
 
   mounted() {
