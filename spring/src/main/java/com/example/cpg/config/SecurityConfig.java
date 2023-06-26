@@ -1,4 +1,4 @@
-package com.example.apg.config;
+package com.example.cpg.config;
 
 import java.util.List;
 
