@@ -15,8 +15,8 @@ import { mapMutations, mapState } from "vuex";
 import ChatList from "@/components/ChatList.vue";
 import ChatForm from "@/components/ChatForm.vue";
 import Constant from "@/Constant";
-import Stomp from 'webstomp-client'
-import SockJS from 'sockjs-client'
+import Stomp from 'webstomp-client';
+import SockJS from 'sockjs-client';
 
 export default {
   data() {
@@ -39,60 +39,42 @@ export default {
     this.connect();
   },
 
-  // mounted() {
-  //   this.$socket.on("chat", (data) => {
-  //     this.pushMsgData(data);
-
-  //     setTimeout(() => {
-  //       const element = document.getElementById("chat__body");
-  //       element.scrollTop = element.scrollHeight;
-  //     }, 0);
-  //   });
-  // },
-
   methods: {
     ...mapMutations({
       pushMsgData: Constant.PUSH_MSG_DATA,
     }),
 
-    sendMessage(msg) {
-      const username = this.userData.userName;
-      const avatar = this.userData.userImage;
-
-      this.pushMsgData({
-        from: {
-          name: "DevplaCalledMe",
-          avatar: avatar,
-        },
-        msg,
-      });
-
-      this.$sendMessage({
-        name: username,
-        msg,
-        avatar: avatar,
-      });
-
-      setTimeout(() => {
-        const element = document.getElementById("chat__body");
-        element.scrollTop = element.scrollHeight;
-      }, 0);
-    },
     send(msg) {
 
-      console.log("Send message:" + msg);
+      
       if (this.stompClient && this.stompClient.connected) {
 
+        const username = this.userData.userName;
+        const avatar = this.userData.userImage;
+
+        this.pushMsgData({
+          from: {
+            name: "DevplaCalledMe",
+            avatar: avatar,
+          },
+          msg,
+        });
+
         const data = { 
-          userName: this.userData.userName,
+          userName: username,
           content: msg 
         };
-
+        console.log("보내는 메시지:" + msg);
         this.stompClient.send("/receive", JSON.stringify(data), {});
+
+        setTimeout(() => {
+          const element = document.getElementById("chat__body");
+          element.scrollTop = element.scrollHeight;
+        }, 0);
       }
     }, 
     connect() {
-      const serverURL = "http://localhost:8080"
+      const serverURL = "http://172.30.1.28:8080"
       let socket = new SockJS(serverURL);
       this.stompClient = Stomp.over(socket);
       console.log(`소켓 연결을 시도합니다. 서버 주소: ${serverURL}`)
@@ -107,8 +89,21 @@ export default {
           this.stompClient.subscribe("/send", res => {
             console.log('구독으로 받은 메시지 입니다.', res.body);
 
-            // 받은 데이터를 json으로 파싱하고 리스트에 넣어줍니다.
-            this.recvList.push(JSON.parse(res.body))
+            let data = JSON.parse(res.body);
+            let msg = data.content;
+
+            this.pushMsgData({
+              from: {
+                name: data.userName
+              },
+              msg
+            });
+
+            setTimeout(() => {
+              const element = document.getElementById("chat__body");
+              element.scrollTop = element.scrollHeight;
+            }, 0);
+
           });
         },
         error => {

@@ -30,18 +30,19 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config = new CorsConfiguration();
+    // @Bean
+    // public CorsConfigurationSource corsConfigurationSource() {
+    //     CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:80", "http://localhost"));
-        config.setAllowedMethods(List.of("GET", "POST"));
-        config.setAllowedHeaders(List.of("*"));
-        config.setExposedHeaders(List.of("*"));
+    //     config.setAllowCredentials(true);
+    //     config.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:80", "http://localhost"));
+    //     config.setAllowedOrigins(List.of("http://172.30.1.28:3000", "http://172.30.1.28:80", "http://172.30.1.28"));
+    //     config.setAllowedMethods(List.of("GET", "POST"));
+    //     config.setAllowedHeaders(List.of("*"));
+    //     config.setExposedHeaders(List.of("*"));
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
-        return source;
-    }
+    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    //     source.registerCorsConfiguration("/**", config);
+    //     return source;
+    // }
 }
