@@ -1,7 +1,7 @@
 <template>
     <router-view class="container" />
     <div class="app_brand">
-      <p @click="moveToHome" class="app_logo">CPG</p>
+      <p @click="moveToHome" class="app_logo">ChatPlayGround</p>
       <div class="app_copyright">ⓒ 2023 Huni. All Right Reserved.</div>
     </div>
 </template>

@@ -54,7 +54,7 @@ export default {
 
         this.pushMsgData({
           from: {
-            name: "DevplaCalledMe",
+            name: "CalledMe",
             avatar: avatar,
           },
           msg,
@@ -74,7 +74,7 @@ export default {
       }
     }, 
     connect() {
-      const serverURL = "http://172.30.1.28:8080"
+      const serverURL = "http://118.36.148.208:8080"
       let socket = new SockJS(serverURL);
       this.stompClient = Stomp.over(socket);
       console.log(`소켓 연결을 시도합니다. 서버 주소: ${serverURL}`)

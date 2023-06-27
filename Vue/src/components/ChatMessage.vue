@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-if="msg.from.name === 'DevplaCalledMe'"
+      v-if="msg.from.name === 'CalledMe'"
       class="chat__mymessage"
       :class="[isSame ? '' : 'chat__first']"
     >
@@ -81,7 +81,7 @@ export default {
   margin: 0.4rem 0 0 1rem;
   border-radius: 20px 20px 0px 20px;
   max-width: 180px;
-  background-color: #bbc4ef;
+  background-color: #82c1dc;
   color: #ffffff;
   padding: 0.8rem;
   font-size: 14px;
