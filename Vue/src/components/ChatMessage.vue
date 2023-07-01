@@ -5,7 +5,7 @@
       class="chat__mymessage"
       :class="[isSame ? '' : 'chat__first']"
     >
-      <!-- <p class="chat__yourmessage__time">23:38</p> -->
+      <p class="chat__yourmessage__time">{{ msg.timeString }}</p>
       <p class="chat__mymessage__paragraph">{{ msg.msg }}</p>
     </div>
     <div
@@ -29,7 +29,7 @@
           <p class="chat__yourmessage__paragraph">
             {{ msg.msg }}
           </p>
-          <!-- <p class="chat__yourmessage__time">23:38</p> -->
+          <p class="chat__yourmessage__time">{{ msg.timeString }}</p>
         </div>
       </div>
     </div>

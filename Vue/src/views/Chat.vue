@@ -14,7 +14,6 @@
 import { mapMutations, mapState } from "vuex";
 import ChatList from "@/components/ChatList.vue";
 import ChatForm from "@/components/ChatForm.vue";
-import Constant from "@/Constant";
 import Stomp from 'webstomp-client';
 import SockJS from 'sockjs-client';
 
@@ -39,18 +38,28 @@ export default {
     this.connect();
   },
 
+  destroyed() {
+    // Stomp 클라이언트 종료 로직
+    this.stompClient.disconnect();
+  },
+
   methods: {
     ...mapMutations({
-      pushMsgData: Constant.PUSH_MSG_DATA,
+      pushMsgData: "pushMsgData",
     }),
 
     send(msg) {
 
-      
       if (this.stompClient && this.stompClient.connected) {
 
         const username = this.userData.userName;
         const avatar = this.userData.userImage;
+
+        let time = new Date();
+        let hours = ('0' + time.getHours()).slice(-2); 
+        let minutes = ('0' + time.getMinutes()).slice(-2);
+
+        let timeString = hours + ':' + minutes;
 
         this.pushMsgData({
           from: {
@@ -58,6 +67,7 @@ export default {
             avatar: avatar,
           },
           msg,
+          timeString
         });
 
         const data = { 
@@ -74,7 +84,7 @@ export default {
       }
     }, 
     connect() {
-      const serverURL = "http://118.36.148.208:8080"
+      const serverURL = "http://118.36.148.208:8080";
       let socket = new SockJS(serverURL);
       this.stompClient = Stomp.over(socket);
       console.log(`소켓 연결을 시도합니다. 서버 주소: ${serverURL}`)
@@ -92,12 +102,21 @@ export default {
             let data = JSON.parse(res.body);
             let msg = data.content;
 
-            this.pushMsgData({
-              from: {
-                name: data.userName
-              },
-              msg
-            });
+            let time = new Date();
+            let hours = ('0' + time.getHours()).slice(-2); 
+            let minutes = ('0' + time.getMinutes()).slice(-2);
+
+            let timeString = hours + ':' + minutes;
+
+            if(this.userData.userName != data.userName) {
+              this.pushMsgData({
+                from: {
+                  name: data.userName
+                },
+                msg,
+                timeString
+              });
+            }
 
             setTimeout(() => {
               const element = document.getElementById("chat__body");
