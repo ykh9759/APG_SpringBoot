@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
     front_img:
-            container_name: APG_Front
+            container_name: CPG_Front
             build: 
                 context: ./file
                 dockerfile: Vue.Dockerfile
@@ -23,7 +23,7 @@ services:
                 server_net:
                     ipv4_address: "172.19.0.10"
     back_img:
-        container_name: APG_back
+        container_name: CPG_back
         build: 
             context: ./file
             dockerfile: Spring.Dockerfile
