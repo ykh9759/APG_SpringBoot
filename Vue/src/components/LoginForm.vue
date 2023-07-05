@@ -6,26 +6,14 @@
         <img src="../assets/camera.svg" alt="" />
       </div>
     </label>
-    <input
-      id="input-file"
-      type="file"
-      @change="uploadImages"
-      accept="image/*"
-      style="display: none"
+    <input id="input-file" type="file" @change="uploadImages" accept="image/*" style="display: none"
     />
     <div class="login__form__username">
-      <label for="input-username" class="login__form__username__label">
-        닉네임을 입력하세요.
-      </label>
-      <input
-        id="input-username"
-        class="login__form__username__input"
-        type="text"
-        v-model.trim="userName"
-        @keyup.enter="joinSubmit"
-        required
-      />
-      <!-- <button @click="joinSubmit">JOIN</button> -->
+      <label for="input-username" class="login__form__username__label">닉네임을 입력하세요.</label>
+      <input id="input-username" class="login__form__username__input" type="text" v-model.trim="userName" @keyup.enter="joinSubmit" required/>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-outline-success login_btn" @click="joinSubmit">확인</button>
+      </div>
     </div>
   </div>
 </template>
@@ -154,5 +142,9 @@ export default {
 
 .login__form__username__input:focus {
   outline: none;
+}
+
+.login_btn {
+  margin-top: 10px;
 }
 </style>

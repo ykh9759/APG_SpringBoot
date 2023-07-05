@@ -1,34 +1,17 @@
 <template>
   <div>
-    <div
-      v-if="msg.from.name === 'CalledMe'"
-      class="chat__mymessage"
-      :class="[isSame ? '' : 'chat__first']"
-    >
+    <div v-if="msg.from.name === 'CalledMe'" class="chat__mymessage" :class="[isSame ? '' : 'chat__first']">
       <p class="chat__yourmessage__time">{{ msg.timeString }}</p>
       <p class="chat__mymessage__paragraph">{{ msg.msg }}</p>
     </div>
-    <div
-      v-else
-      class="chat__yourmessage"
-      :class="[isSame ? '' : 'chat__first']"
-    >
+    <div v-else class="chat__yourmessage" :class="[isSame ? '' : 'chat__first']">
       <div class="chat__yourmessage__avartar">
-        <img
-          :src="avatar"
-          alt=""
-          v-if="!isSame"
-          class="chat__yourmessage__img"
-        />
+        <img :src="avatar" alt="" v-if="!isSame" class="chat__yourmessage__img"/>
       </div>
       <div>
-        <p class="chat__yourmessage__user" v-if="!isSame">
-          {{ msg.from.name }}
-        </p>
+        <p class="chat__yourmessage__user" v-if="!isSame">{{ msg.from.name }}</p>
         <div class="chat__yourmessage__p">
-          <p class="chat__yourmessage__paragraph">
-            {{ msg.msg }}
-          </p>
+          <p class="chat__yourmessage__paragraph">{{ msg.msg }}</p>
           <p class="chat__yourmessage__time">{{ msg.timeString }}</p>
         </div>
       </div>
