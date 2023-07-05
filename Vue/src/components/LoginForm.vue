@@ -69,6 +69,9 @@ export default {
           name: "chat",
           params: { userData: userData },
         });
+      } else {
+        alert("닉네임을 입력해주세요");
+        return;
       }
     },
   },
