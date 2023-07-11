@@ -36,6 +36,12 @@ export default {
 
 body {
   background-color: #82e3ce;
+  font-family: "Golden Plains - Demo";
+  src: url("./assets/GoldenPlains.woff2") format("woff2"),
+    url("./assets/GoldenPlains.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 .container {

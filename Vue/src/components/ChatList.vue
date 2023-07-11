@@ -1,5 +1,5 @@
 <template>
-  <div class="chat__body" id="chat__body">
+  <div class="chat_body" id="chat_body">
     <chat-message
       v-for="(msg, index) in msgs"
       :key="index"

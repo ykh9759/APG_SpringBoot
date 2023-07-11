@@ -78,7 +78,7 @@ export default {
         this.stompClient.send("/receive", JSON.stringify(data), {});
 
         setTimeout(() => {
-          const element = document.getElementById("chat__body");
+          const element = document.getElementById("chat_body");
           element.scrollTop = element.scrollHeight;
         }, 0);
       }
@@ -119,7 +119,7 @@ export default {
             }
 
             setTimeout(() => {
-              const element = document.getElementById("chat__body");
+              const element = document.getElementById("chat_body");
               element.scrollTop = element.scrollHeight;
             }, 0);
 
