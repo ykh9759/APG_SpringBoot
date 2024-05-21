@@ -7,8 +7,8 @@ services:
                 context: ./file
                 dockerfile: Vue.Dockerfile
             volumes:
-                - C:/Users/ykh05/Desktop/Project/APG/vue:/home/vue
-                - C:/Users/ykh05/Desktop/Project/APG/docker/nginx/sites-available:/etc/nginx/sites-available
+                - C:/Users/ykh05/Desktop/Project/CPG/vue:/home/vue
+                - C:/Users/ykh05/Desktop/Project/CPG/docker/nginx/sites-available:/etc/nginx/sites-available
             ports:
                 - "80:80"
                 - "3000:3000"
@@ -28,7 +28,7 @@ services:
             context: ./file
             dockerfile: Spring.Dockerfile
         volumes:
-            - C:/Users/ykh05/Desktop/Project/APG/spring:/home/spring
+            - C:/Users/ykh05/Desktop/Project/CPG/spring:/home/spring
         ports:
             - "8080:8080"
         privileged: true

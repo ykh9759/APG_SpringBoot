@@ -14,17 +14,16 @@ public class FrontController {
     // /send로 메시지를 반환합니다.
     @SendTo("/send")
     // SocketHandler는 1) /receive에서 메시지를 받고, /send로 메시지를 보내준다
-    public ChatVo SocketHandler(ChatVo socketVO) {
+    public ChatVo socketHandler(ChatVo chatVo) {
 
-        String userName = socketVO.getUserName();
-        String content = socketVO.getContent();
+        String userName = chatVo.getUserName();
+        String content = chatVo.getContent();
 
         // 생성자로 반환값을 생성합니다.
-        ChatVo result = ChatVo.builder()
+        // 반환
+        return ChatVo.builder()
                             .userName(userName)
                             .content(content)
                             .build();
-        // 반환
-        return result;
     }
 }
